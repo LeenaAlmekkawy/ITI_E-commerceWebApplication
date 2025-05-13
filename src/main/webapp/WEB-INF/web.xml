@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app metadata-complete="true" version="5.0"
+         xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+
+  <!-- Listener -->
+  <listener>
+    <listener-class>jets.projects.listeners.AppStartupListener</listener-class>
+  </listener>
+
+  <!-- Admin Servlets -->
+  <servlet>
+    <servlet-name>AdminRootRedirect</servlet-name>
+    <servlet-class>jets.projects.admin_user.AdminRootRedirect</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AdminDirector</servlet-name>
+    <servlet-class>jets.projects.admin_user.AdminDirector</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AdminLogin</servlet-name>
+    <servlet-class>jets.projects.admin_user.AdminLogin</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AdminLogout</servlet-name>
+    <servlet-class>jets.projects.admin_user.AdminLogout</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AdminSearchProducts</servlet-name>
+    <servlet-class>jets.projects.admin_user.AdminSearchProducts</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AdminUsers</servlet-name>
+    <servlet-class>jets.projects.admin_user.AdminUsers</servlet-class>
+  </servlet>
+
+  <!-- Admin Servlet Mappings -->
+  <servlet-mapping>
+    <servlet-name>AdminRootRedirect</servlet-name>
+    <url-pattern>/Admin</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AdminDirector</servlet-name>
+    <url-pattern>/Admin/Home</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AdminDirector</servlet-name>
+    <url-pattern>/Admin/Login</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AdminDirector</servlet-name>
+    <url-pattern>/Admin/Logout</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AdminDirector</servlet-name>
+    <url-pattern>/Admin/AdminSearchProducts</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AdminUsers</servlet-name>
+    <url-pattern>/Admin/AdminUsers</url-pattern>
+  </servlet-mapping>
+
+    <!-- Dashboard servlets-->
+    <servlet>
+        <servlet-name>StatsServlet</servlet-name>
+        <servlet-class>jets.projects.admin_user.StatsServlet</servlet-class>
+    </servlet>
+
+  <!-- Orders Servlets -->
+  <servlet>
+    <servlet-name>OrdrersServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.orders.OrdersServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UpdateOrderStatusServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.orders.UpdateOrderStatusServlet</servlet-class>
+  </servlet>
+
+  <!-- Orders Servlet Mappings -->
+  <servlet-mapping>
+    <servlet-name>OrdrersServlet</servlet-name>
+    <url-pattern>/Admin/OrdersServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UpdateOrderStatusServlet</servlet-name>
+    <url-pattern>/Admin/UpdateOrderStatusServlet</url-pattern>
+  </servlet-mapping>
+
+  <!-- Purchase History Servlets -->
+  <servlet>
+    <servlet-name>PurchaseStatsServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.purchaseHistory.StatsServlet</servlet-class>
+  </servlet>
+
+    <servlet>
+        <servlet-name>PurchaseHistoryServlet</servlet-name>
+        <servlet-class>jets.projects.admin_user.purchaseHistory.PurchaseHistoryServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ReceiptDownloadServlet</servlet-name>
+        <servlet-class>jets.projects.admin_user.purchaseHistory.ReceiptDownloadServlet</servlet-class>
+    </servlet>
+
+    <!-- User Servlets -->
+    <servlet>
+        <servlet-name>UserGetAllOrdersList</servlet-name>
+        <servlet-class>jets.projects.normal_user.UserGetAllOrdersList</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UserGetOrderDetails</servlet-name>
+        <servlet-class>jets.projects.normal_user.UserGetOrderDetails</servlet-class>
+    </servlet>
+
+    <!-- Checkout Servlets -->
+<servlet>
+    <servlet-name>UserCheckoutUsingAccountBalance</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserCheckoutUsingAccountBalance</servlet-class>
+</servlet>
+
+<servlet>
+    <servlet-name>UserCheckoutUsingCreditCard</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserCheckoutUsingCreditCard</servlet-class>
+</servlet>
+
+  <!-- Purchase History Servlet Mappings -->
+
+  <servlet-mapping>
+    <servlet-name>PurchaseStatsServlet</servlet-name>
+    <url-pattern>/Admin/StatsServlet</url-pattern>
+  </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PurchaseHistoryServlet</servlet-name>
+        <url-pattern>/Admin/PurchaseHistoryServlet/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ReceiptDownloadServlet</servlet-name>
+        <url-pattern>/Admin/ReceiptDownloadServlet/*</url-pattern>
+    </servlet-mapping>
+
+  <!-- Discounts Admin Servlets -->
+  <servlet>
+    <servlet-name>BannersServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.discounts.BannersServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>BooksServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.discounts.BooksServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>CategoriesServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.discounts.CategoriesServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>DiscountsServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.discounts.DiscountsServlet</servlet-class>
+  </servlet>
+
+  <!-- Discounts Admin Servlet Mappings -->
+  <servlet-mapping>
+    <servlet-name>BannersServlet</servlet-name>
+    <url-pattern>/Admin/BannersServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>BooksServlet</servlet-name>
+    <url-pattern>/Admin/BooksServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>CategoriesServlet</servlet-name>
+    <url-pattern>/Admin/CategoriesServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DiscountsServlet</servlet-name>
+    <url-pattern>/Admin/DiscountsServlet</url-pattern>
+  </servlet-mapping>
+
+    <!--Dashboard servlets mapping-->
+    <servlet-mapping>
+        <servlet-name>StatsServlet</servlet-name>
+        <url-pattern>/Admin/DashboardStatsServlet</url-pattern>
+    </servlet-mapping>
+
+  <!-- User Servlets -->
+  <servlet>
+    <servlet-name>UserDirector</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserDirector</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserLogin</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserLogin</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserRegister</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserRegister</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserLogout</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserLogout</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserSearchProducts</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserSearchProducts</servlet-class>
+  </servlet>
+
+
+<!-- Get User Profile -->
+<servlet>
+    <servlet-name>UserGetProfile</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserGetProfile</servlet-class>
+</servlet>
+
+<!-- Update Email -->
+<servlet>
+    <servlet-name>UserUpdateEmail</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserUpdateEmail</servlet-class>
+</servlet>
+
+<!-- Update Password -->
+<servlet>
+    <servlet-name>UserUpdatePassword</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserUpdatePassword</servlet-class>
+</servlet>
+
+<!-- Update Personal Details -->
+<servlet>
+    <servlet-name>UserUpdatePersonalDetails</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserUpdatePersonalDetails</servlet-class>
+</servlet>
+
+<!-- Recharge Account Balance -->
+<servlet>
+    <servlet-name>UserRechargeAccountBalanceUsingCreditCard</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserRechargeAccountBalanceUsingCreditCard</servlet-class>
+</servlet>
+<!-- Get Cart -->
+<servlet>
+    <servlet-name>UserGetCart</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserGetCart</servlet-class>
+</servlet>
+
+<!-- Validate Cart -->
+<servlet>
+    <servlet-name>UserValidateCart</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserValidateCart</servlet-class>
+</servlet>
+
+<!-- Get Shipping Fee -->
+<servlet>
+    <servlet-name>UserGetCartShippingFee</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserGetCartShippingFee</servlet-class>
+</servlet>
+
+<!-- Add Item to Cart -->
+<servlet>
+    <servlet-name>UserAddItemToCart</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserAddItemToCart</servlet-class>
+</servlet>
+
+<!-- Update Cart Item Quantity -->
+<servlet>
+    <servlet-name>UserUpdateCartItemQuantity</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserUpdateCartItemQuantity</servlet-class>
+</servlet>
+
+<!-- Remove Cart Item -->
+<servlet>
+    <servlet-name>UserRemoveCartItem</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserRemoveCartItem</servlet-class>
+</servlet>
+
+<!-- Truncate Cart -->
+<servlet>
+    <servlet-name>UserTruncateCart</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserTruncateCart</servlet-class>
+</servlet>
+
+<!-- get Cart subtotoal-->
+
+<servlet>
+    <servlet-name>UserGetCartSubtotal</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserGetCartSubtotal</servlet-class>
+</servlet>
+
+<!-- wishlist -->
+<servlet>
+    <servlet-name>UserGetAllWishList</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserGetAllWishList</servlet-class>
+</servlet>
+
+<servlet>
+    <servlet-name>UserGetAllWishListBooks</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserGetAllWishListBooks</servlet-class>
+</servlet>
+
+<servlet>
+    <servlet-name>UserAddWishListItem</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserAddWishListItem</servlet-class>
+</servlet>
+
+<servlet>
+    <servlet-name>UserRemoveFromWishList</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserRemoveFromWishList</servlet-class>
+</servlet>
+
+
+  <!-- books servlets -->
+
+  <servlet>
+    <servlet-name>UserGetTopSellingBooksList</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserGetTopSellingBooksList</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserGetTopSellingBookFromEachGenreList</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserGetTopSellingBookFromEachGenreList</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserGetAllBooksList</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserGetAllBooksList</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserSearchBooks</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserSearchBooks</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserGetBookDetails</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserGetBookDetails</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserGetAllPurchaseHistoryList</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserGetAllPurchaseHistoryList</servlet-class>
+</servlet>
+
+<servlet>
+    <servlet-name>UserGetPurchaseHistoryItemDetails</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserGetPurchaseHistoryItemDetails</servlet-class>
+</servlet>
+
+
+
+
+
+
+  <!-- User Servlet Mappings -->
+  <servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/Home</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userRegister</url-pattern>
+  </servlet-mapping>
+
+   <servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userLogin</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userLogout</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/SearchProducts</url-pattern>
+  </servlet-mapping>
+
+
+<!-- Get User Profile -->
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userGetProfile</url-pattern>
+</servlet-mapping>
+
+<!-- Update Email -->
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userUpdateEmail</url-pattern>
+</servlet-mapping>
+
+<!-- Update Password -->
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userUpdatePassword</url-pattern>
+</servlet-mapping>
+
+<!-- Update Personal Details -->
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userUpdatePersonalDetails</url-pattern>
+</servlet-mapping>
+
+<!-- Recharge Account Balance -->
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userRechargeAccountBalanceUsingCreditCard</url-pattern>
+</servlet-mapping>
+
+<!-- Cart Operations -->
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userGetCart</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userValidateCart</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userGetCartShippingFee</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userAddItemToCart</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userUpdateCartItemQuantity</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userRemoveCartItem</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userTruncateCart</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userGetCartSubtotal</url-pattern>
+</servlet-mapping>
+
+<!--wishlist-->
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userGetAllWishList</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userGetAllWishListBooks</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userAddWishListItem</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userRemoveFromWishList</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userGetAllOrdersList</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userGetOrderDetails</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userCheckoutUsingAccountBalance</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userCheckoutUsingCreditCard</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userGetAllPurchaseHistoryList</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/userGetPurchaseHistoryItemDetails</url-pattern>
+</servlet-mapping>
+
+
+
+
+
+
+  <!-- books servlets mapping-->
+
+   <servlet-mapping>
+    <servlet-name>UserGetTopSellingBooksList</servlet-name>
+    <url-pattern>/userGetTopSellingBooksList</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UserGetTopSellingBookFromEachGenreList</servlet-name>
+    <url-pattern>/userGetTopSellingBookFromEachGenreList</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UserGetAllBooksList</servlet-name>
+    <url-pattern>/userGetAllBooksList</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UserSearchBooks</servlet-name>
+    <url-pattern>/userSearchBooks</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UserGetBookDetails</servlet-name>
+    <url-pattern>/userGetBookDetails</url-pattern>
+  </servlet-mapping>
+
+
+  <!-- Error Handler -->
+  <servlet>
+    <servlet-name>ErrorHandler</servlet-name>
+    <jsp-file>/Error/error_page.jspx</jsp-file>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ErrorHandler</servlet-name>
+    <url-pattern>/Error</url-pattern>
+  </servlet-mapping>
+
+  <!-- Upload Servlet -->
+  <servlet>
+    <servlet-name>uploadServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.UploadServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>uploadServlet</servlet-name>
+    <url-pattern>/Admin/uploadServlet</url-pattern>
+  </servlet-mapping>
+
+  <!-- Filters -->
+  <!--
+  <filter>
+    <filter-name>userLoginCheckFilter</filter-name>
+    <filter-class>jets.projects.filters.UserLoginCheckFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>userLoginCheckFilter</filter-name>
+    <url-pattern>/Admin/*</url-pattern>
+  </filter-mapping>
+  -->
+
+  <filter>
+    <filter-name>corsFilter</filter-name>
+    <filter-class>jets.projects.filters.CORSFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>corsFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- Welcome Files -->
+  <welcome-file-list>
+    <welcome-file>Home</welcome-file>
+    <welcome-file>Error</welcome-file>
+  </welcome-file-list>
+
+</web-app>

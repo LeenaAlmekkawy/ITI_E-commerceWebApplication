@@ -1,0 +1,475 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  margin: var(--spacing-xl) auto;
+  width: 90%;
+  max-width: 1400px;
+  padding: var(--spacing-xl);
+  background-color: var(--bg-primary);
+  border-radius: var(--main-border-radius);
+  box-shadow: var(--main-box-shadow);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: var(--spacing-md);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: var(--spacing-sm);
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+input,
+button {
+  font-family: var(--font-primary);
+  border: var(--main-border);
+  border-radius: var(--main-border-radius);
+  font-weight: 500;
+  font-size: 1rem;
+  padding: var(--spacing-md) var(--spacing-lg);
+  transition: all var(--transition-normal);
+}
+
+input {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--main-box-shadow);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+h1.center-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-xl);
+  font-weight: 700;
+}
+
+main .loading-data,
+main .no-data-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  font-size: 1.2rem;
+  padding: var(--spacing-xl);
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.product-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: var(--main-border-radius);
+  transition: transform var(--transition-normal);
+  position: relative;
+  z-index: 1;
+}
+
+.product-image:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+/* Book Card Styling */
+.book-card {
+  width: 100%;
+  height: 100%;
+  padding: var(--spacing-sm);
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--main-border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.book-card:hover {
+  box-shadow: var(--hover-box-shadow);
+  transform: translateY(-3px);
+}
+
+.book-card h3 {
+  font-size: 1rem;
+  margin: var(--spacing-sm) 0;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 2.6rem;
+}
+
+/* Make overview visible on hover with blurred background - ONLY on image hover */
+.book-card .overview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  padding: var(--spacing-md);
+  height: 250px; /* Match image height */
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  overflow-y: auto;
+  backdrop-filter: blur(5px);
+  pointer-events: none;
+}
+
+.book-card .product-image:hover + h3 + .book-card-details + .overview {
+  opacity: 1;
+}
+
+.book-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0 0 var(--spacing-xs);
+  text-align: center;
+}
+
+.book-card-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  width: 100%;
+}
+
+/* Price display styling - Updated to show prices side by side */
+.price-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin: 0 0 var(--spacing-xs);
+}
+
+.original-price {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-decoration: line-through;
+}
+
+.discounted-price {
+  font-size: 0.95rem;
+  color: var(--discount);
+  font-weight: 600;
+}
+
+/* Stock Status Colors */
+.stock-status {
+  font-weight: 600 !important;
+  font-size: 0.8rem !important;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 12px;
+  margin: var(--spacing-xs) 0;
+}
+
+.stock-status.in-stock {
+  color: var(--success);
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+.stock-status.out-stock {
+  color: var(--error);
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.stock-status.low-stock,
+.stock-status.last-piece {
+  color: var(--warning);
+  background-color: rgba(245, 158, 11, 0.1);
+}
+
+/* Hide quantity selection & add-to-cart button for out-of-stock items */
+.out-of-stock .quantity-container,
+.out-of-stock .add-to-cart {
+  display: none;
+}
+
+/* Quantity Selection */
+.quantity-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin: var(--spacing-sm) 0;
+  width: 100%;
+}
+
+.quantity-selector button {
+  background-color: var(--primary-color);
+  color: white;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-selector button:hover {
+  background-color: var(--primary-dark);
+}
+
+.quantity-selector button:disabled {
+  background-color: var(--bg-accent);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.quantity-selector input {
+  width: 40px;
+  font-size: 0.9rem;
+  padding: var(--spacing-xs);
+}
+
+/* Add to Cart Button */
+.add-to-cart {
+  background-color: var(--primary-color);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-md);
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--main-border-radius);
+  transition: all var(--transition-normal);
+}
+
+.add-to-cart:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Updated grid to show 4 books per row */
+.top-books,
+.top-genre-books,
+.books-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-md);
+  justify-content: center;
+  padding: var(--spacing-sm);
+}
+
+/* Back to Profile Button */
+.back-button {
+  align-self: center;
+  background-color: var(--primary-color);
+  color: white;
+  transition: all var(--transition-normal);
+}
+
+.back-button:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Wish List Button Styling */
+.add-to-wishlist {
+  position: absolute;
+  top: var(--spacing-xs);
+  right: var(--spacing-xs);
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all var(--transition-normal);
+  border-radius: 50%;
+  z-index: 4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-to-wishlist img {
+  width: 16px;
+  height: 16px;
+}
+
+.add-to-wishlist:hover {
+  transform: scale(1.1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.add-to-wishlist:active {
+  transform: scale(0.95);
+}
+
+/* Discount badge styling */
+.discount-badge {
+  position: absolute;
+  top: var(--spacing-xs);
+  left: var(--spacing-xs);
+  background-color: var(--discount);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .top-books,
+  .top-genre-books,
+  .books-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 820px) {
+  html {
+    font-size: 95%;
+  }
+
+  main {
+    width: 95%;
+    padding: var(--spacing-lg);
+  }
+
+  .top-books,
+  .top-genre-books,
+  .books-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  html {
+    font-size: 90%;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  main {
+    width: 100%;
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    border-radius: 0;
+  }
+
+  .top-books,
+  .top-genre-books,
+  .books-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+}

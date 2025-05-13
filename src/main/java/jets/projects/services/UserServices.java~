@@ -1,0 +1,10 @@
+package jets.projects.services;
+
+public class UserServices
+{
+    UserDto login(String email, String password) {
+        //throw
+        // databases connection
+        return null;
+    }
+}

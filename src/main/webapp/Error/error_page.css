@@ -1,0 +1,75 @@
+:root {
+    --main-font-family: sans-serif;
+    --main-font-size: clamp(12px, 2vw, 2vw);
+    --main-border: 2px solid;
+    --main-border-colour: black;
+    --main-border-radius: 10px;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    
+    font-family: var(--main-font-family);
+}
+
+html, body {
+    height: 100%;
+    min-width: 500px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    
+    font-size: var(--main-font-size);
+    color: #FFF;
+    
+    background-color: #333;
+    background-image: url("screwdriver.svg");
+}
+
+header, main {
+    border: var(--main-border);
+    border-color: var(--main-border-colour);
+    border-radius: var(--main-border-radius);
+    margin: 2px;
+    padding: 5px;
+    display: flex;
+    
+    background-color: #555;
+}
+
+header {
+    height: 15%;
+    justify-content: center;
+    align-items: center;
+    color: yellow;
+}
+
+main {
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    
+    position: relative;
+}
+
+main p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.corner-img {
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    width: 30%;
+    height: 30%;
+}

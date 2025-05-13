@@ -1,0 +1,4 @@
+package jets.projects.client_dto;
+
+public class UserDto {
+}

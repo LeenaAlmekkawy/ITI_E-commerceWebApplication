@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Cart | Book Alley</title>
+    <link rel="icon" type="image/x-icon" href="Assets/tabIcon.ico">
+
+    <script type="module">
+        import LoadingOverlay from "./JavaScript/Common/LoadingOverlay.js";
+
+        const loadingOverlay = new LoadingOverlay();
+        loadingOverlay.createAndDisplay();
+
+        window.addEventListener('load', () => {
+            loadingOverlay.remove();
+        });
+    </script>
+
+    <link rel="stylesheet" href="CSS/Common/reset.css"/>
+    <link rel="stylesheet" href="CSS/Common/root.css"/>
+    <link rel="stylesheet" href="CSS/Common/header.css"/>
+    <link rel="stylesheet" href="CSS/Common/footer.css"/>
+    <link rel="stylesheet" href="CSS/Common/main.css"/>
+    <link rel="stylesheet" href="CSS/Common/MessagePopup.css"/>
+    <link rel="stylesheet" href="CSS/Common/BookPopup.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <link rel="stylesheet" href="CSS/cart.css"/>
+
+    <script src="JavaScript/Common/context_path.js"></script>
+
+    <script defer type="module" src="JavaScript/Common/header.js"></script>
+    <script defer type="module" src="JavaScript/Common/footer.js"></script>
+
+    <script defer type="module" src="JavaScript/cart.js"></script>
+</head>
+<body>
+<header id="siteHeader">
+    <!-- Header will be injected here by JS -->
+</header>
+
+<main>
+    <div class="cart-header">
+        <h1 class="center-title">My Shopping Cart</h1>
+        <button id="truncateCartButton">Empty Cart</button>
+    </div>
+
+    <section id="cartItems" class="cart-items-list">
+        <!-- Cart Items will be injected here by JS -->
+    </section>
+
+    <div class="total">
+        <p>
+            <strong>Number of Different Books:</strong>
+            <span id="numberOfDifferentBooks">0</span>
+        </p>
+
+        <p>
+            <strong>Total Number of Books:</strong>
+            <span id="totalNumberOfBooks">0</span>
+        </p>
+
+        <p>
+            <strong>Subtotal Amount:</strong>
+            <span id="subtotalAmount">0.00 EGP</span>
+        </p>
+    </div>
+
+    <button id="checkoutButton" class="checkout-button">
+        Proceed to Checkout
+    </button>
+</main>
+
+<footer id="siteFooter">
+    <!-- Footer will be injected here by JS -->
+</footer>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'935e9996591bbf82',t:'MTc0NTU5MjA3Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>

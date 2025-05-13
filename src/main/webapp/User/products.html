@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Products | Book Alley</title>
+    <link rel="icon" type="image/x-icon" href="Assets/tabIcon.ico">
+
+    <script type="module">
+        import LoadingOverlay from "./JavaScript/Common/LoadingOverlay.js";
+
+        const loadingOverlay = new LoadingOverlay();
+        loadingOverlay.createAndDisplay();
+
+        window.addEventListener('load', () => {
+            loadingOverlay.remove();
+        });
+    </script>
+
+    <link rel="stylesheet" href="CSS/Common/reset.css"/>
+    <link rel="stylesheet" href="CSS/Common/root.css"/>
+    <link rel="stylesheet" href="CSS/Common/header.css"/>
+    <link rel="stylesheet" href="CSS/Common/footer.css"/>
+    <link rel="stylesheet" href="CSS/Common/main.css"/>
+    <link rel="stylesheet" href="CSS/Common/MessagePopup.css"/>
+    <link rel="stylesheet" href="CSS/Common/BookPopup.css"/>
+
+    <link rel="stylesheet" href="CSS/products.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <script src="JavaScript/Common/context_path.js"></script>
+
+    <script defer type="module" src="JavaScript/Common/header.js"></script>
+    <script defer type="module" src="JavaScript/Common/footer.js"></script>
+
+    <script defer type="module" src="JavaScript/products.js"></script>
+</head>
+<body>
+<header id="siteHeader">
+    <!-- Header will be injected here by JS -->
+</header>
+
+<main>
+    <h1 class="center-title">Browse Our Book Collection</h1>
+
+    <section class="books-controls">
+        <div class="search-container">
+            <label for="searchBar">Search for books</label>
+            <input type="text" id="searchBar" placeholder="Title, author, genre..."/>
+            <button type="button" id="searchButton">Search</button>
+        </div>
+        <div class="filters">
+            <div class="filter-group">
+                <label for="genreFilter">Filter by Genre:</label>
+                <select id="genreFilter">
+                    <option value="all">All Genres</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>
+                    <input type="checkbox" id="unavailableToggle"/>
+                    Include Out-of-Stock Items
+                </label>
+            </div>
+        </div>
+    </section>
+
+    <section class="books-list" id="booksList">
+        <!-- Products will be injected here by JS -->
+    </section>
+
+    <div class="pagination-container">
+        <div class="pagination-controls">
+            <button id="prevPage" class="pagination-button" disabled>&larr;</button>
+            <label for="pageInput" class="sr-only">Page number</label>
+            <input type="number" id="pageInput" min="1" value="1" class="page-input">
+            <button id="nextPage" class="pagination-button">&rarr;</button>
+        </div>
+        <div class="page-indicator" id="pageIndicator">Page 1 of 1</div>
+    </div>
+</main>
+
+<footer id="siteFooter">
+    <!-- Footer will be injected here by JS -->
+</footer>
+</body>
+</html>

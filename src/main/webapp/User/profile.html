@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/x-icon" href="Assets/tabIcon.ico">
+    <title>Profile | Book Alley</title>
+
+    <script type="module">
+        import LoadingOverlay from "./JavaScript/Common/LoadingOverlay.js";
+
+        const loadingOverlay = new LoadingOverlay();
+        loadingOverlay.createAndDisplay();
+
+        window.addEventListener('load', () => {
+            loadingOverlay.remove();
+        });
+    </script>
+
+    <link rel="stylesheet" href="CSS/Common/reset.css"/>
+    <link rel="stylesheet" href="CSS/Common/root.css"/>
+    <link rel="stylesheet" href="CSS/Common/header.css"/>
+    <link rel="stylesheet" href="CSS/Common/footer.css"/>
+    <link rel="stylesheet" href="CSS/Common/main.css"/>
+    <link rel="stylesheet" href="CSS/Common/MessagePopup.css"/>
+    <link rel="stylesheet" href="CSS/profile.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <script src="JavaScript/Common/context_path.js"></script>
+
+    <script defer type="module" src="JavaScript/Common/header.js"></script>
+    <script defer type="module" src="JavaScript/Common/footer.js"></script>
+
+    <script defer type="module" src="JavaScript/profile.js"></script>
+</head>
+<body>
+<header id="siteHeader">
+    <!-- Header will be injected here by JS -->
+</header>
+
+<main>
+    <div class="profile-container">
+        <div class="profile-sidebar">
+            <div class="profile-header">
+                <h2 id="profileName">Ibrahim Diab</h2>
+                <p id="profileEmail">ibrahim0diab@gmail.com</p>
+            </div>
+
+            <nav class="profile-nav">
+                <button class="profile-nav-item" data-section="account-info">
+                    <i class="fas fa-user"></i>
+                    <span>Account Info</span>
+                </button>
+                <button class="profile-nav-item" data-section="security">
+                    <i class="fas fa-lock"></i>
+                    <span>Security</span>
+                </button>
+                <button class="profile-nav-item active" data-section="balance">
+                    <i class="fas fa-wallet"></i>
+                    <span>Balance</span>
+                </button>
+            </nav>
+
+            <div class="quick-links">
+                <h3>Quick Links</h3>
+                <div class="quick-links-container">
+                    <a href="#" id="viewOrders" class="quick-link-item">
+                        <i class="fas fa-box"></i>
+                        <span>Orders</span>
+                    </a>
+                    <a href="#" id="viewPurchaseHistory" class="quick-link-item">
+                        <i class="fas fa-history"></i>
+                        <span>Purchase History</span>
+                    </a>
+                    <a href="#" id="viewWishList" class="quick-link-item">
+                        <i class="fas fa-heart"></i>
+                        <span>Wish List</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-content">
+            <!-- Account Info Section -->
+            <section id="account-info" class="profile-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-user"></i> Account Information</h2>
+                    <p>Manage your personal information</p>
+                </div>
+
+                <form id="editProfileForm" class="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editUserName">Full Name</label>
+                            <input type="text" id="editUserName" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="editPhone">Phone Number</label>
+                            <input type="text" id="editPhone" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editAddress">Address</label>
+                        <input type="text" id="editAddress" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editBirthDate">Birth Date</label>
+                        <input type="date" id="editBirthDate" required />
+                    </div>
+
+                    <div id="profileChangesError" class="error"></div>
+
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save"></i> Update Profile
+                    </button>
+                </form>
+            </section>
+
+            <!-- Security Section -->
+            <section id="security" class="profile-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-lock"></i> Security</h2>
+                    <p>Manage your email and password</p>
+                </div>
+
+                <div class="security-card">
+                    <div class="security-card-header">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Address</h3>
+                    </div>
+                    <div class="security-card-content">
+                        <p>Current Email: <span id="displayEmail">Loading...</span></p>
+                        <button id="openChangeEmailPopupButton" class="btn-secondary">
+                            <i class="fas fa-pen"></i> Change Email
+                        </button>
+                    </div>
+                </div>
+
+                <div class="security-card">
+                    <div class="security-card-header">
+                        <i class="fas fa-key"></i>
+                        <h3>Password</h3>
+                    </div>
+                    <div class="security-card-content">
+                        <p>Secure your account with a strong password</p>
+                        <button id="openChangePasswordPopupButton" class="btn-secondary">
+                            <i class="fas fa-lock"></i> Change Password
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Balance Section -->
+            <section id="balance" class="profile-section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-wallet"></i> Account Balance</h2>
+                    <p>Manage your account balance</p>
+                </div>
+
+                <div class="balance-card">
+                    <div class="balance-amount">
+                        <h3>Current Balance</h3>
+                        <div class="amount-display">
+                            <i class="fas fa-coins"></i>
+                            <span id="userBalance">1750 EGP</span>
+                        </div>
+                    </div>
+                    <button id="rechargeBalanceButton" class="btn-primary">
+                        <i class="fas fa-plus-circle"></i> Recharge Balance
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Popups -->
+    <div class="popup-overlay hidden"></div>
+
+    <div id="passwordPopup" class="popup hidden">
+        <div class="popup-header">
+            <h2><i class="fas fa-lock"></i> Change Password</h2>
+            <button class="popup-close" aria-label="Close popup">&times;</button>
+        </div>
+        <div class="popup-content">
+            <div class="form-group">
+                <label for="currentPassword">Current Password</label>
+                <input type="password" id="currentPassword" />
+            </div>
+            <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword" />
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm New Password</label>
+                <input type="password" id="confirmPassword" />
+            </div>
+            <div id="passwordChangeError" class="error"></div>
+            <div class="popup-buttons">
+                <button id="confirmPasswordChangeButton" class="btn-primary">
+                    <i class="fas fa-check"></i> Confirm
+                </button>
+                <button id="cancelPasswordChangeButton" class="btn-secondary">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="emailPopup" class="popup hidden">
+        <div class="popup-header">
+            <h2><i class="fas fa-envelope"></i> Change Email</h2>
+            <button class="popup-close" aria-label="Close popup">&times;</button>
+        </div>
+        <div class="popup-content">
+            <div class="form-group">
+                <label for="newEmail">New Email</label>
+                <input type="email" id="newEmail" />
+            </div>
+            <div id="emailChangeError" class="error"></div>
+            <div class="popup-buttons">
+                <button id="confirmEmailUpdate" class="btn-primary">
+                    <i class="fas fa-check"></i> Confirm
+                </button>
+                <button id="cancelEmailUpdate" class="btn-secondary">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="rechargePopup" class="popup hidden">
+        <div class="popup-header">
+            <h2><i class="fas fa-wallet"></i> Recharge Balance</h2>
+            <button class="popup-close" aria-label="Close popup">&times;</button>
+        </div>
+        <div class="popup-content">
+            <div class="form-group">
+                <label for="rechargeAmount">Amount (EGP)</label>
+                <input type="number" id="rechargeAmount" min="0" step="0.01" />
+            </div>
+            <h3>Payment Details</h3>
+            <div class="form-group">
+                <label for="rechargeNameOnCard">Name on Card</label>
+                <input type="text" id="rechargeNameOnCard" />
+            </div>
+            <div class="form-group">
+                <label for="rechargeCardNumber">Card Number</label>
+                <input type="text" id="rechargeCardNumber" placeholder="XXXX XXXX XXXX XXXX" />
+            </div>
+            <div class="expiry-date-container">
+                <div class="form-group">
+                    <label for="rechargeExpiryMonth">Expiry Month</label>
+                    <select id="rechargeExpiryMonth">
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rechargeExpiryYear">Expiry Year</label>
+                    <select id="rechargeExpiryYear"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rechargeCvc">CVC</label>
+                <input type="text" id="rechargeCvc" placeholder="XXX" />
+            </div>
+            <div class="popup-buttons">
+                <button id="confirmRecharge" class="btn-primary">
+                    <i class="fas fa-check"></i> Confirm
+                </button>
+                <button id="cancelRecharge" class="btn-secondary">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer id="siteFooter">
+    <!-- Footer will be injected here by JS -->
+</footer>
+</body>
+</html>

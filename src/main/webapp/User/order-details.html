@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Order Details | Book Alley</title>
+    <link rel="icon" type="image/x-icon" href="Assets/tabIcon.ico">
+
+    <script type="module">
+        import LoadingOverlay from "./JavaScript/Common/LoadingOverlay.js";
+
+        const loadingOverlay = new LoadingOverlay();
+        loadingOverlay.createAndDisplay();
+
+        window.addEventListener('load', () => {
+            loadingOverlay.remove();
+        });
+    </script>
+
+    <link rel="stylesheet" href="CSS/Common/reset.css"/>
+    <link rel="stylesheet" href="CSS/Common/root.css"/>
+    <link rel="stylesheet" href="CSS/Common/header.css"/>
+    <link rel="stylesheet" href="CSS/Common/footer.css"/>
+    <link rel="stylesheet" href="CSS/Common/main.css"/>
+    <link rel="stylesheet" href="CSS/Common/MessagePopup.css"/>
+    <link rel="stylesheet" href="CSS/Common/BookPopup.css"/>
+    <link rel="stylesheet" href="CSS/order-details.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <script src="JavaScript/Common/context_path.js"></script>
+
+    <script defer type="module" src="JavaScript/Common/header.js"></script>
+    <script defer type="module" src="JavaScript/Common/footer.js"></script>
+
+    <script defer type="module" src="JavaScript/order-details.js"></script>
+</head>
+<body>
+<header id="siteHeader">
+    <!-- Header will be injected here by JS -->
+</header>
+
+<main>
+    <div class="order-header">
+        <h1 id="orderTitle">Order Details</h1>
+        <button id="backToOrdersButton">Back to Orders</button>
+    </div>
+
+    <section id="orderDetails">
+        <!-- Order details will be injected here by JS -->
+    </section>
+
+    <section class="order-items-section">
+        <h2>Order Items</h2>
+        <div id="orderItems" class="order-items-list">
+            <!-- Order items will be injected here by JS -->
+        </div>
+    </section>
+
+    <section class="order-summary">
+        <h2>Order Summary</h2>
+        <div class="order-summary-details">
+            <p>
+                <strong>Subtotal:</strong>
+                <span id="subtotal">0.00</span> EGP
+            </p>
+            <p>
+                <strong>Shipping Fee:</strong>
+                <span id="shippingFee">0.00</span> EGP
+            </p>
+            <p>
+                <strong>Total Amount:</strong>
+                <span id="totalAmount">0.00</span> EGP
+            </p>
+        </div>
+    </section>
+</main>
+
+<footer id="siteFooter">
+    <!-- Footer will be injected here by JS -->
+</footer>
+</body>
+</html>

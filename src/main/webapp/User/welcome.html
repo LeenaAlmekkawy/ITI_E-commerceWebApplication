@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/x-icon" href="Assets/tabIcon.ico">
+    <title>Welcome to Book Alley</title>
+
+    <script type="module">
+        import LoadingOverlay from "./JavaScript/Common/LoadingOverlay.js";
+
+        const loadingOverlay = new LoadingOverlay();
+        loadingOverlay.createAndDisplay();
+
+        window.addEventListener('load', () => {
+            loadingOverlay.remove();
+        });
+    </script>
+
+    <link rel="stylesheet" href="CSS/Common/reset.css"/>
+    <link rel="stylesheet" href="CSS/Common/root.css"/>
+    <link rel="stylesheet" href="CSS/Common/header.css"/>
+    <link rel="stylesheet" href="CSS/Common/footer.css"/>
+    <link rel="stylesheet" href="CSS/Common/main.css"/>
+    <link rel="stylesheet" href="CSS/Common/MessagePopup.css"/>
+    <link rel="stylesheet" href="CSS/Common/BookPopup.css"/>
+
+    <link rel="stylesheet" href="CSS/welcome.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <script src="JavaScript/Common/context_path.js"></script>
+
+    <script defer type="module" src="JavaScript/Common/header.js"></script>
+    <script defer type="module" src="JavaScript/Common/footer.js"></script>
+
+    <script type="module" src="JavaScript/welcome.js"></script>
+</head>
+<body>
+<header id="siteHeader">
+    <!-- Header will be injected here by JS -->
+</header>
+
+<main>
+    <section class="welcome-banner">
+        <h1>Welcome to Book Alley</h1>
+        <p>Where Every Book Finds Its Home</p>
+        <button type="button" id="browseButton" class="browse-button">
+            <i class="fas fa-book-open"></i> Explore Books
+        </button>
+    </section>
+
+    <section id="eventBanner">
+        <button id="prevBtn" aria-label="Previous announcement"><i class="fas fa-chevron-left"></i></button>
+        <div id="bannerMessages">
+            <!-- Will be injected by JS. -->
+        </div>
+        <button id="nextBtn" aria-label="Next announcement"><i class="fas fa-chevron-right"></i></button>
+    </section>
+
+    <section id="topSellingSection">
+        <h2>Top Selling Books</h2>
+        <div id="topSelling" class="top-books"></div>
+    </section>
+
+    <section id="topSellingGenreSection">
+        <h2>Top Selling in Genre</h2>
+        <div id="topSellingGenreBook" class="top-genre-books"></div>
+    </section>
+</main>
+
+<footer id="siteFooter">
+    <!-- Footer will be injected here by JS -->
+</footer>
+</body>
+</html>

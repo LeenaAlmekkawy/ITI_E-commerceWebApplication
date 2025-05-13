@@ -1,0 +1,12 @@
+package jets.projects.client_dto;
+
+public class BookImageDto
+{
+    private String url;
+    private Boolean isMain;
+
+    public String getUrl() { return url; }
+    public void setUrl(String url) { this.url = url; }
+    public Boolean getIsMain() { return isMain; }
+    public void setIsMain(Boolean isMain) { this.isMain = isMain; }
+}

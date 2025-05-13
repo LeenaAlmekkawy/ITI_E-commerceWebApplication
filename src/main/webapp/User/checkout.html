@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Checkout | Book Alley</title>
+    <link rel="icon" type="image/x-icon" href="Assets/tabIcon.ico">
+
+    <script type="module">
+        import LoadingOverlay from "./JavaScript/Common/LoadingOverlay.js";
+
+        const loadingOverlay = new LoadingOverlay();
+        loadingOverlay.createAndDisplay();
+
+        window.addEventListener('load', () => {
+            loadingOverlay.remove();
+        });
+    </script>
+
+    <link rel="stylesheet" href="CSS/Common/reset.css"/>
+    <link rel="stylesheet" href="CSS/Common/root.css"/>
+    <link rel="stylesheet" href="CSS/Common/header.css"/>
+    <link rel="stylesheet" href="CSS/Common/footer.css"/>
+    <link rel="stylesheet" href="CSS/Common/main.css"/>
+    <link rel="stylesheet" href="CSS/Common/MessagePopup.css"/>
+    <link rel="stylesheet" href="CSS/checkout.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <script src="JavaScript/Common/context_path.js"></script>
+
+    <script defer type="module" src="JavaScript/Common/header.js"></script>
+    <script defer type="module" src="JavaScript/Common/footer.js"></script>
+
+    <script defer type="module" src="JavaScript/checkout.js"></script>
+</head>
+<body>
+<header id="siteHeader">
+    <!-- Header will be injected here by JS -->
+</header>
+
+<main>
+    <div class="checkout-header">
+        <h1 class="center-title">Checkout</h1>
+        <button id="backToCart">Back to Cart</button>
+    </div>
+
+    <div class="checkout-container">
+        <div class="checkout-form">
+            <h2>Complete Your Order</h2>
+
+            <div class="form-section shipping-section">
+                <h3>Shipping Information</h3>
+                <p id="address">Loading your address...</p>
+            </div>
+
+            <div class="form-section payment-section">
+                <h3>Payment Method</h3>
+
+                <div class="payment-methods">
+                    <label class="payment-method">
+                        <input type="radio" name="paymentMethod" value="accountBalance" checked>
+                        <span class="payment-method-label">Pay with Account Balance</span>
+                    </label>
+
+                    <label class="payment-method">
+                        <input type="radio" name="paymentMethod" value="creditCard">
+                        <span class="payment-method-label">Pay with Credit Card</span>
+                    </label>
+                </div>
+
+                <div id="creditCardForm" style="display: none;">
+                    <div class="form-group">
+                        <label for="nameOnCard">Name on Card</label>
+                        <input type="text" id="nameOnCard" placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
+                    </div>
+
+                    <div class="card-details">
+                        <div class="form-group">
+                            <label for="expiryMonth">Expiry Month</label>
+                            <select id="expiryMonth">
+                                <option value="">Month</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="expiryYear">Expiry Year</label>
+                            <select id="expiryYear">
+                                <option value="">Year</option>
+                                <!-- Will be populated by JS -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cvc">CVC</label>
+                            <input type="text" id="cvc" placeholder="123">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="balanceNotice">
+                    <p><strong>Current Balance:</strong> <span id="currentBalanceDisplay">0.00</span> EGP</p>
+                    <p><strong>Amount to be deducted:</strong> <span id="deductionAmount">0.00</span> EGP</p>
+                    <p id="accountBalance" style="display: none;">0.00</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+
+            <div class="summary-items">
+                <div class="summary-item">
+                    <span class="item-name">Subtotal</span>
+                    <span class="item-price"><span id="subtotal">0.00</span> EGP</span>
+                </div>
+
+                <div class="summary-item">
+                    <span class="item-name">Shipping Fee</span>
+                    <span class="item-price"><span id="shippingFee">0.00</span> EGP</span>
+                </div>
+            </div>
+
+            <div class="summary-total">
+                <span class="total-label">Total</span>
+                <span class="total-price"><span id="totalAmount">0.00</span> EGP</span>
+            </div>
+
+            <button id="placeOrderButton">Place Order</button>
+        </div>
+    </div>
+</main>
+
+<footer id="siteFooter">
+    <!-- Footer will be injected here by JS -->
+</footer>
+</body>
+</html>

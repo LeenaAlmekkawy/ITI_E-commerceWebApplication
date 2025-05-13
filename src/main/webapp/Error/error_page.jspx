@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+    <jsp:directive.page contentType="text/html; charset=UTF-8"
+                        pageEncoding="UTF-8"/>
+    
+    <!-- HTML5 -->
+    <jsp:output doctype-root-element="html" 
+                doctype-public="" 
+                doctype-system=""/>
+    
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Project 2 Demo</title>
+
+        <link rel="stylesheet" href="error_page.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Fallback Error Page</h1>
+        </header>
+        <main>
+            <img class="corner-img" src="broken-cable-svgrepo-com.svg" alt="corner-img" />
+            <p>    
+            <c:choose>
+                <c:when test="${not empty param.errorMessage}">
+                ${param.errorMessage}
+                </c:when>
+                <c:otherwise>
+                You were redirected to here since we could not reach the main service!
+                </c:otherwise>
+            </c:choose>
+            </p>
+        </main>
+    </body>
+    </html>
+</jsp:root>

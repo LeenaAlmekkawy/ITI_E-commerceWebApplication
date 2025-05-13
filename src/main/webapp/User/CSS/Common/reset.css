@@ -1,0 +1,26 @@
+/* Add these rules to the top of your reset.css file */
+body::before,
+body::after {
+  display: none !important;
+}
+
+body
+  > *:not(header):not(main):not(footer):not(.auth-modal-overlay):not(.popup-message-container):not(.loading-overlay):not(.popup-overlay) {
+  display: none !important;
+}
+
+/* Add fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}

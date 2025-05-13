@@ -1,0 +1,80 @@
+package jets.projects.admin_user;
+
+import java.io.IOException;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jets.projects.dal.UsersDAL;
+import jets.projects.entity.Admin;
+import jets.projects.services.AdminService;
+
+public class AdminLogin extends HttpServlet {
+
+    private final UsersDAL usersDAL = new UsersDAL();
+
+    @Override
+    public void doPost(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
+
+        String adminUsername = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        System.out.println("username: " + adminUsername);
+        System.out.println("password: " + password);
+
+        // Check in database using AdminService
+        AdminService adminService = new AdminService();
+        Admin admin = adminService.getByUsername(adminUsername);
+        if (admin != null && admin.getHashPassword().equals(password.trim())) {
+            // Data is correct
+            // Create a new session if not existed, and refresh old one if exists.
+            HttpSession session = request.getSession(false);
+            if (session != null) {
+                session.invalidate();
+            }
+            session = request.getSession(true);
+            session.setAttribute("adminUsername", adminUsername);
+            session.setAttribute("adminLoggedIn", "true");
+
+            response.sendRedirect(request.getContextPath()
+                    + AdminURLMapper.BOOKS_PAGE);
+            System.out.println(session.getAttribute("adminUsername"));
+
+        } else {
+            response.sendRedirect(request.getContextPath()
+                    + AdminURLMapper.LOGIN_PAGE);
+        }
+    }
+
+    private String checkInputForError(String adminIDString, String password) {
+        if (adminIDString == null) {
+            return "Admin ID must be provided.";
+        }
+
+        adminIDString = adminIDString.trim();
+        if (adminIDString.isEmpty()) {
+            return "Admin ID cannot be empty.";
+        }
+
+        try {
+            Integer.valueOf(adminIDString);
+        } catch (NumberFormatException ex) {
+            return "Admin ID is not an Integer.";
+        }
+
+        if (password == null) {
+            return "Password must be provided.";
+        }
+
+        if (password.isBlank()) {
+            return "Password cannot be empty.";
+        }
+
+        return null;
+
+    }
+
+}

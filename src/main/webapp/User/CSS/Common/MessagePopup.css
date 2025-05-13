@@ -1,0 +1,95 @@
+/* Message Popup Styles */
+.popup-message-container {
+  position: fixed;
+  bottom: 20px; /* Changed from top: 20px */
+  right: 20px;
+  max-width: 350px;
+  min-width: 280px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateX(120%);
+  transition: transform 0.3s ease-out;
+  overflow: hidden;
+}
+
+.popup-message-container.show {
+  transform: translateX(0);
+}
+
+.popup-message-container::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.popup-message-info::before {
+  background-color: var(--primary-color);
+}
+
+.popup-message-error::before {
+  background-color: var(--error);
+}
+
+.popup-message-text {
+  margin: 0;
+  padding-right: 16px;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.popup-close-button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.popup-close-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--text-primary);
+}
+
+.popup-message-info .popup-message-text::before {
+  content: "\f05a";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: var(--primary-color);
+  margin-right: 8px;
+}
+
+.popup-message-error .popup-message-text::before {
+  content: "\f06a";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: var(--error);
+  margin-right: 8px;
+}
+
+@media (max-width: 520px) {
+  .popup-message-container {
+    left: 20px;
+    right: 20px;
+    bottom: 20px; /* Ensure it stays at the bottom on small screens */
+    max-width: none;
+  }
+}

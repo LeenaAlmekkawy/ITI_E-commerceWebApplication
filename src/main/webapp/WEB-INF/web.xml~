@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app metadata-complete="true" version="5.0"
+         xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+
+  <!-- Listener -->
+  <listener>
+    <listener-class>jets.projects.listeners.AppStartupListener</listener-class>
+  </listener>
+
+
+  <!-- Admin Servlets -->
+  <servlet>
+    <servlet-name>AdminRootRedirect</servlet-name>
+    <servlet-class>jets.projects.admin_user.AdminRootRedirect</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AdminDirector</servlet-name>
+    <servlet-class>jets.projects.admin_user.AdminDirector</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AdminLogin</servlet-name>
+    <servlet-class>jets.projects.admin_user.AdminLogin</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AdminLogout</servlet-name>
+    <servlet-class>jets.projects.admin_user.AdminLogout</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AdminSearchProducts</servlet-name>
+    <servlet-class>jets.projects.admin_user.AdminSearchProducts</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>AdminUsers</servlet-name>
+    <servlet-class>jets.projects.admin_user.AdminUsers</servlet-class>
+  </servlet>
+
+
+  <!-- Admin Servlet Mappings -->
+  <servlet-mapping>
+    <servlet-name>AdminRootRedirect</servlet-name>
+    <url-pattern>/Admin</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AdminDirector</servlet-name>
+    <url-pattern>/Admin/Home</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AdminDirector</servlet-name>
+    <url-pattern>/Admin/Login</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AdminDirector</servlet-name>
+    <url-pattern>/Admin/Logout</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AdminDirector</servlet-name>
+    <url-pattern>/Admin/AdminSearchProducts</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AdminUsers</servlet-name>
+    <url-pattern>/Admin/AdminUsers</url-pattern>
+  </servlet-mapping>
+
+
+  <!-- Orders Servlets -->
+  <servlet>
+    <servlet-name>OrdrersServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.orders.OrdersServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UpdateOrderStatusServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.orders.UpdateOrderStatusServlet</servlet-class>
+  </servlet>
+
+
+  <!-- Orders Servlet Mappings -->
+  <servlet-mapping>
+    <servlet-name>OrdrersServlet</servlet-name>
+    <url-pattern>/Admin/OrdersServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UpdateOrderStatusServlet</servlet-name>
+    <url-pattern>/Admin/UpdateOrderStatusServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <!-- Purchase History Servlets -->
+  <servlet>
+    <servlet-name>PurchaseHistoryServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.purchaseHistory.PurchaseHistoryServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>PurchaseHistoryApiServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.purchaseHistory.PurchaseHistoryApiServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>ReceiptDetailsApiServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.purchaseHistory.ReceiptDetailsApiServlet</servlet-class>
+  </servlet>
+
+
+  <!-- Purchase History Servlet Mappings -->
+  <servlet-mapping>
+    <servlet-name>AdminDirector</servlet-name>
+    <url-pattern>/Admin/PurchaseHistory</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AdminDirector</servlet-name>
+    <url-pattern>/Admin/PurchaseHistory/api</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>AdminDirector</servlet-name>
+    <url-pattern>/Admin/PurchaseHistory/api/*</url-pattern>
+  </servlet-mapping>
+
+
+  <!-- Discounts Admin Servlets -->
+  <servlet>
+    <servlet-name>BannersServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.discounts.BannersServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>BooksServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.discounts.BooksServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>CategoriesServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.discounts.CategoriesServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>DiscountsServlet</servlet-name>
+    <servlet-class>jets.projects.admin_user.discounts.DiscountsServlet</servlet-class>
+  </servlet>
+
+
+  <!-- Discounts Admin Servlet Mappings -->
+  <servlet-mapping>
+    <servlet-name>BannersServlet</servlet-name>
+    <url-pattern>/Admin/BannersServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>BooksServlet</servlet-name>
+    <url-pattern>/Admin/BooksServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>CategoriesServlet</servlet-name>
+    <url-pattern>/Admin/CategoriesServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DiscountsServlet</servlet-name>
+    <url-pattern>/Admin/DiscountsServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <!-- User Servlets -->
+  <servlet>
+    <servlet-name>UserDirector</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserDirector</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserLogin</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserLogin</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserRegister</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserRegister</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserLogout</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserLogout</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserSearchProducts</servlet-name>
+    <servlet-class>jets.projects.normal_user.UserSearchProducts</servlet-class>
+  </servlet>
+
+
+  <!-- User Servlet Mappings -->
+  <servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/Home</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/Register</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UserDirector</servlet-name>
+    <url-pattern>/SearchProducts</url-pattern>
+  </servlet-mapping>
+
+
+  <!-- Error Handler -->
+  <servlet>
+    <servlet-name>ErrorHandler</servlet-name>
+    <jsp-file>/Error/error_page.jspx</jsp-file>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ErrorHandler</servlet-name>
+    <url-pattern>/Error</url-pattern>
+  </servlet-mapping>
+
+    <servlet>
+        <servlet-name>uploadServlet</servlet-name>
+        <servlet-class>jets.projects.admin_user.UploadServlet</servlet-class>
+    </servlet>
+
+  <servlet-mapping>
+    <servlet-name>uploadServlet</servlet-name>
+    <url-pattern>/Admin/uploadServlet</url-pattern>
+  </servlet-mapping>
+
+  <!-- Filters -->
+  <filter>
+    <filter-name>userLoginCheckFilter</filter-name>
+    <filter-class>jets.projects.filters.UserLoginCheckFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>userLoginCheckFilter</filter-name>
+    <url-pattern>/Admin/*</url-pattern>
+  </filter-mapping>
+
+
+  <!-- Welcome Files -->
+  <welcome-file-list>
+    <welcome-file>Home</welcome-file>
+    <welcome-file>Error</welcome-file>
+  </welcome-file-list>
+
+</web-app>

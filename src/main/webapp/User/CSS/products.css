@@ -1,0 +1,546 @@
+/* Books Grid */
+#booksList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md);
+}
+
+/* Book Card */
+.book-card {
+  background-color: white;
+  border-radius: var(--main-border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: var(--spacing-md);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--main-border-radius);
+  transition: all var(--transition-normal);
+}
+
+.book-card:hover .product-image {
+  opacity: 0.95;
+}
+
+.book-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: var(--spacing-xs) 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.book-card-details p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.book-card-details .author,
+.book-card-details .genre {
+  font-size: 0.85rem;
+}
+
+.book-card-details .price-container {
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+}
+
+.book-card-details .price {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.book-card-details .original-price {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+.book-card-details .discounted-price {
+  color: var(--discount);
+  font-weight: 600;
+}
+
+.book-card .overview {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  display: none; /* Hidden by default, shown on hover */
+  margin-top: var(--spacing-sm);
+}
+
+.book-card:hover .overview {
+  display: block;
+}
+
+.stock-status {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.stock-status.in-stock {
+  color: var(--success);
+}
+
+.stock-status.out-stock {
+  color: var(--error);
+}
+
+.stock-status.low-stock,
+.stock-status.last-piece {
+  color: var(--warning);
+}
+
+.discount-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: var(--discount);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+/* Add to Wishlist Button */
+.add-to-wishlist {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  z-index: 2;
+}
+
+.add-to-wishlist img {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+.add-to-wishlist:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.2) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Quantity Selector and Add to Cart */
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+}
+
+.quantity-selector button {
+  background-color: var(--bg-accent);
+  color: var(--text-primary);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.quantity-selector button:hover:not(:disabled) {
+  background-color: var(--primary-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+.quantity-selector button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity-selector input {
+  width: 40px;
+  text-align: center;
+  padding: var(--spacing-xs);
+  border: 1px solid var(--bg-accent);
+  border-radius: var(--main-border-radius);
+  font-size: 0.9rem;
+}
+
+.add-to-cart {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  margin-top: var(--spacing-sm);
+  align-self: center;
+}
+
+.add-to-cart:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* 🔎 Search & Filter Controls */
+.books-controls {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--bg-primary);
+  border-radius: var(--main-border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: var(--spacing-lg);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-container {
+  flex: 1;
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  position: relative;
+}
+
+.search-container label {
+  display: none; /* Hidden since we’ll use a placeholder and icon */
+}
+
+#searchBar {
+  flex: 1;
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-md) 40px; /* Space for icon */
+  border: none;
+  border-radius: 50px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-normal);
+  font-size: 1rem;
+  color: var(--text-primary);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%234f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>');
+  background-repeat: no-repeat;
+  background-position: 12px center;
+}
+
+#searchBar::placeholder {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+#searchBar:focus {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+#searchButton {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#searchButton:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#searchButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.filters {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+#genreFilter {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: 50px;
+  background-color: white;
+  color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-normal);
+  font-size: 0.95rem;
+}
+
+#genreFilter:focus {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.filters label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* Checkbox styling */
+.filters input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background-color: white;
+  border: 2px solid var(--primary-color);
+  position: relative;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.filters input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+}
+
+.filters input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  color: white;
+  font-size: 12px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.filters input[type="checkbox"]:focus {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+  outline: none;
+}
+
+/* Pagination Styles */
+.pagination-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: white;
+  border-radius: var(--main-border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.pagination-controls {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.pagination-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--main-border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all var(--transition-normal);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.pagination-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-button:disabled {
+  background-color: var(--bg-accent);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.page-input {
+  width: 60px;
+  padding: var(--spacing-sm);
+  text-align: center;
+  border: 1px solid var(--bg-accent);
+  border-radius: var(--main-border-radius);
+  transition: all var(--transition-normal);
+  font-size: 1rem;
+}
+
+.page-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.page-indicator {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-top: var(--spacing-xs);
+}
+
+/* No Data Found */
+.no-data-found {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--spacing-lg);
+  background-color: white;
+  border-radius: var(--main-border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.no-data-found::before {
+  content: "📚";
+  font-size: 2rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 820px) {
+  #booksList {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .books-controls {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--spacing-md);
+  }
+
+  .search-container {
+    flex-direction: row;
+    gap: var(--spacing-sm);
+  }
+
+  #searchBar {
+    width: 100%;
+  }
+
+  #searchButton {
+    width: auto;
+  }
+
+  .filters {
+    flex-direction: row;
+    gap: var(--spacing-sm);
+    justify-content: space-between;
+  }
+
+  .filter-group {
+    flex: 1;
+    justify-content: center;
+  }
+
+  #genreFilter {
+    width: 100%;
+  }
+
+  .pagination-controls {
+    gap: var(--spacing-xs);
+  }
+
+  .pagination-button {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+}
+
+@media (max-width: 520px) {
+  #booksList {
+    grid-template-columns: 1fr;
+  }
+
+  .books-controls {
+    padding: var(--spacing-sm);
+  }
+
+  .search-container {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  #searchButton {
+    width: 100%;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-group {
+    justify-content: flex-start;
+  }
+
+  .book-card {
+    padding: var(--spacing-sm);
+  }
+
+  .book-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .product-image {
+    height: 180px;
+  }
+
+  .page-input {
+    width: 40px;
+  }
+}
