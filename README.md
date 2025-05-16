@@ -29,8 +29,8 @@ Book Alley is a full-featured e-commerce platform designed for book lovers, buil
 - HTML
 - CSS
 - JavaScript
-- jQuery
 - AJAX
+- Web Sockets
 
 ### Backend:
 - Java Servlets
