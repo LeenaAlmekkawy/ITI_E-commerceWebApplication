@@ -1,27 +1,5 @@
 # Book Alley - Online Bookstore
 
-![Alt text](images/Screenshot6.png)
-![Alt text](images/Screenshot7.png)
-![Alt text](images/Screenshot8.png)
-![Alt text](images/Screenshot9.png)
-![Alt text](images/Screenshot10.png)
-![Alt text](images/Screenshot11.png)
-![Alt text](images/Screenshot12.png)
-![Alt text](images/Screenshot13.png)
-![Alt text](images/Screenshot14.png)
-![Alt text](images/Screenshot15.png)
-![Alt text](images/Screenshot16.png)
-![Alt text](images/Screenshot17.png)
-![Alt text](images/Screenshot18.png)
-![Alt text](images/Screenshot19.png)
-![Alt text](images/Screenshot20.png)
-![Alt text](images/Screenshot21.png)
-![Alt text](images/Screenshot22.png)
-![Alt text](images/Screenshot23.png)
-![Alt text](images/Screenshot24.png)
-![Alt text](images/Screenshot25.png)
-![Alt text](images/Screenshot26.png)
-
 ## 📖 Project Overview
 Book Alley is a full-featured e-commerce platform designed for book lovers, built as an ITI project. It offers a comprehensive online bookstore experience with features for both customers and administrators.
 
@@ -88,5 +66,28 @@ To run this project locally:
 - The application demonstrates full CRUD operations for books and user accounts
 - Includes responsive design elements for better user experience
 - Features secure authentication for both users and administrators
+
+![Alt text](images/Screenshot6.png)
+![Alt text](images/Screenshot7.png)
+![Alt text](images/Screenshot8.png)
+![Alt text](images/Screenshot9.png)
+![Alt text](images/Screenshot10.png)
+![Alt text](images/Screenshot11.png)
+![Alt text](images/Screenshot12.png)
+![Alt text](images/Screenshot13.png)
+![Alt text](images/Screenshot14.png)
+![Alt text](images/Screenshot15.png)
+![Alt text](images/Screenshot16.png)
+![Alt text](images/Screenshot17.png)
+![Alt text](images/Screenshot18.png)
+![Alt text](images/Screenshot19.png)
+![Alt text](images/Screenshot20.png)
+![Alt text](images/Screenshot21.png)
+![Alt text](images/Screenshot22.png)
+![Alt text](images/Screenshot23.png)
+![Alt text](images/Screenshot24.png)
+![Alt text](images/Screenshot25.png)
+![Alt text](images/Screenshot26.png)
+
 
 
