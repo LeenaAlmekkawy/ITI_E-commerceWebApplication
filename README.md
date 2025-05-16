@@ -1,5 +1,7 @@
 # Book Alley - Online Bookstore
 
+![Alt text](images/Screenshot(6).png)
+
 ## 📖 Project Overview
 Book Alley is a full-featured e-commerce platform designed for book lovers, built as an ITI project. It offers a comprehensive online bookstore experience with features for both customers and administrators.
 
@@ -66,3 +68,5 @@ To run this project locally:
 - The application demonstrates full CRUD operations for books and user accounts
 - Includes responsive design elements for better user experience
 - Features secure authentication for both users and administrators
+
+
